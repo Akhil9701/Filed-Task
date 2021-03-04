@@ -1,0 +1,49 @@
+<div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <form *ngIf="userFormGroup" [formGroup]="userFormGroup" (ngSubmit)="onSubmit()">
+                    <fieldset>
+                        <legend class="text-info">User Registration Form</legend>
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" formControlName="firstName" class="form-control" />
+                            <small class="form-text text-danger"
+                                *ngIf="userFormGroup.controls.firstName.errors">{{userFormGroup.controls.firstName.errors.required.message}}<br /></small>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" formControlName="lastName" class="form-control" />
+                            <small class="form-text text-danger"
+                                *ngIf="userFormGroup.controls.lastName.errors">{{userFormGroup.controls.lastName.errors.required.message}}<br /></small>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" formControlName="email" class="form-control" />
+                            <small class="form-text text-danger"
+                                *ngIf="userFormGroup.controls.email.errors && userFormGroup.controls.email.errors.required">{{userFormGroup.controls.email.errors.required.message}}<br /></small>
+                                <small class="form-text text-danger"
+                                *ngIf="userFormGroup.controls.email.errors && userFormGroup.controls.email.errors.email">{{userFormGroup.controls.email.errors.email.message}}<br /></small>    
+                        </div>
+                        <div class="form-group">
+                            <label>Monthly Advertising Budget </label>
+                            <input type="text" formControlName="monthlyAdBudget" class="form-control" />
+                            <small class="form-text text-danger"
+                                *ngIf="userFormGroup.controls.monthlyAdBudget.errors && userFormGroup.controls.monthlyAdBudget.errors.required">{{userFormGroup.controls.monthlyAdBudget.errors.required.message}}<br /></small>
+                            <small class="form-text text-danger"
+                                *ngIf="userFormGroup.controls.monthlyAdBudget.errors && userFormGroup.controls.monthlyAdBudget.errors.numeric">{{userFormGroup.controls.monthlyAdBudget.errors.numeric.message}}<br /></small>
+                                
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" formControlName="phone" class="form-control" />
+                            <small class="form-text text-danger"
+                                *ngIf="userFormGroup.controls.phone.errors && userFormGroup.controls.phone.errors.required">{{userFormGroup.controls.phone.errors.required.message}}<br /></small>
+                            <small class="form-text text-danger"
+                                *ngIf="userFormGroup.controls.phone.errors && userFormGroup.controls.phone.errors.numeric">{{userFormGroup.controls.phone.errors.numeric.message}}<br /></small>
+                        </div>
+                        <button [disabled]="!userFormGroup.valid" type="submit" class="btn btn-primary">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
